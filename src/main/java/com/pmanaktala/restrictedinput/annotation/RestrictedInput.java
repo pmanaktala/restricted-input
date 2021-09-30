@@ -2,22 +2,32 @@ package com.pmanaktala.restrictedinput.annotation;
 
 import com.pmanaktala.restrictedinput.validator.RestrictedInputValidator;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = RestrictedInputValidator.class)
-@Target( { ElementType.FIELD })
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictedInput {
     String message() default "Invalid input!";
-    String[] ignoredValues();
+
+    /**
+     *
+     * Specify a list of values that should not present in the given input.
+     * It does a 'contains' operation, and if any of the value is found in input,
+     * it fails the validation.
+     */
+    String[] valuesToRestrict();
+
+    /**
+     * Specify a list of regular expression that the input should MATCH to.
+     * If any of the regex does not match the input, the validation fails.
+     */
+    String[] regexToMatch();
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

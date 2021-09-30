@@ -1,20 +1,46 @@
 package com.pmanaktala.restrictedinput.validator;
 
 import com.pmanaktala.restrictedinput.annotation.RestrictedInput;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 public class RestrictedInputValidator implements ConstraintValidator<RestrictedInput, String> {
 
-    public void initialize(RestrictedInput restrictedInput) {
+    List<String> valuesToRestrict;
+    List<String> regexToMatch;
 
+
+    @Override
+    public void initialize(RestrictedInput restrictedInput) {
+        valuesToRestrict = Arrays.asList(restrictedInput.valuesToRestrict());
+        regexToMatch = Arrays.asList(restrictedInput.regexToMatch());
     }
 
     @Override
-    public boolean isValid(String contactField, ConstraintValidatorContext cxt) {
+    public boolean isValid(String field, ConstraintValidatorContext cxt) {
+        return validRegex(field) && validFiledValue(field);
+    }
 
-        return contactField != null && contactField.matches("[0-9]+") && (contactField.length() > 8) && (contactField.length() < 14);
+    private boolean validFiledValue(String field) {
+        if(valuesToRestrict.isEmpty() || isEmpty(field)) {
+            return true;
+        }
+
+        return valuesToRestrict.stream().noneMatch(field::contains);
+    }
+
+    private boolean validRegex(String field) {
+        if(regexToMatch.isEmpty() || isEmpty(field)) {
+            return true;
+        }
+
+        return regexToMatch.stream().allMatch(field::matches);
     }
 
 }
