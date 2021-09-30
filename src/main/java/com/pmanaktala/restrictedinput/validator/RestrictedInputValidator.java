@@ -15,7 +15,6 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
     List<String> valuesToRestrict;
     List<String> regexToMatch;
 
-
     @Override
     public void initialize(RestrictedInput restrictedInput) {
         valuesToRestrict = Arrays.asList(restrictedInput.valuesToRestrict());
@@ -27,6 +26,12 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
         return validRegex(field) && validFiledValue(field);
     }
 
+    /**
+     * Checks if the input has any restricted value or not
+     *
+     * @param field input
+     * @return result
+     */
     private boolean validFiledValue(String field) {
         if(valuesToRestrict.isEmpty() || isEmpty(field)) {
             return true;
@@ -35,6 +40,12 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
         return valuesToRestrict.stream().noneMatch(field::contains);
     }
 
+    /**
+     * Checks if the input matches the given regex or not
+     *
+     * @param field input
+     * @return result
+     */
     private boolean validRegex(String field) {
         if(regexToMatch.isEmpty() || isEmpty(field)) {
             return true;
