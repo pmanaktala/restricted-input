@@ -6,6 +6,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
+/**
+ * Checks if the input is valid against the restrictedValue or validRegex Patterns.
+ */
 @Documented
 @Constraint(validatedBy = RestrictedInputValidator.class)
 @Target({ElementType.FIELD})
@@ -16,12 +19,18 @@ public @interface RestrictedInput {
     /**
      *
      * Specify a list of values that should not present in the given input.
-     * It does a 'contains' operation, and if any of the value is found in input,
-     * it fails the validation.
+     * If any of the value is found in input, it fails the validation.
      *
      * @return values to restrict
      */
-    String[] valuesToRestrict();
+    String[] valuesToRestrict() default {};
+
+    /**
+     * If true the exact match of the values with the input is done,
+     * if set to false then a contains check is done.
+     * @return if exact match or not
+     */
+    boolean exactMatchValues() default false;
 
     /**
      * Specify a list of regular expression that the input should MATCH to.
@@ -29,7 +38,7 @@ public @interface RestrictedInput {
      *
      * @return regex to match
      */
-    String[] regexToMatch();
+    String[] regexToMatch() default {};
 
     Class<?>[] groups() default {};
 
