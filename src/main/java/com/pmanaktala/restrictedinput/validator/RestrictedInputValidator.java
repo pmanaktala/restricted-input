@@ -1,7 +1,6 @@
 package com.pmanaktala.restrictedinput.validator;
 
 import com.pmanaktala.restrictedinput.annotation.RestrictedInput;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -14,13 +13,26 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
 
     List<String> valuesToRestrict;
     List<String> regexToMatch;
+    Boolean exactMatch;
 
+    /**
+     * {@inheritDoc}
+     * @param restrictedInput
+     */
     @Override
     public void initialize(RestrictedInput restrictedInput) {
         valuesToRestrict = Arrays.asList(restrictedInput.valuesToRestrict());
         regexToMatch = Arrays.asList(restrictedInput.regexToMatch());
+        exactMatch = restrictedInput.exactMatchValues();
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param field The field to validate
+     * @param cxt Context
+     * @return valid or not
+     */
     @Override
     public boolean isValid(String field, ConstraintValidatorContext cxt) {
         return validRegex(field) && validFiledValue(field);
@@ -33,11 +45,15 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
      * @return result
      */
     private boolean validFiledValue(String field) {
-        if(valuesToRestrict.isEmpty() || isEmpty(field)) {
+        if (valuesToRestrict.isEmpty() || isEmpty(field)) {
             return true;
         }
 
-        return valuesToRestrict.stream().noneMatch(field::contains);
+        if (exactMatch) {
+            return valuesToRestrict.stream().noneMatch(field::equals);
+        } else {
+            return valuesToRestrict.stream().noneMatch(field::contains);
+        }
     }
 
     /**
@@ -47,7 +63,7 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
      * @return result
      */
     private boolean validRegex(String field) {
-        if(regexToMatch.isEmpty() || isEmpty(field)) {
+        if (regexToMatch.isEmpty() || isEmpty(field)) {
             return true;
         }
 
