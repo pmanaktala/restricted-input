@@ -17,7 +17,7 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
 
     /**
      * {@inheritDoc}
-     * @param restrictedInput
+     * @param restrictedInput The restricted input annotation.
      */
     @Override
     public void initialize(RestrictedInput restrictedInput) {
