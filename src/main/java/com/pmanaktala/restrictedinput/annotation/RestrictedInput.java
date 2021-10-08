@@ -11,7 +11,8 @@ import java.lang.annotation.*;
  */
 @Documented
 @Constraint(validatedBy = RestrictedInputValidator.class)
-@Target({ElementType.FIELD})
+@Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE,
+        ElementType.LOCAL_VARIABLE, ElementType.TYPE_PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictedInput {
     String message() default "Invalid input!";
