@@ -4,8 +4,10 @@ import com.pmanaktala.restrictedinput.annotation.RestrictedInput;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import javax.validation.constraints.NotNull;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
@@ -19,6 +21,7 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
      * {@inheritDoc}
      * @param restrictedInput The restricted input annotation.
      */
+    @NotNull
     @Override
     public void initialize(RestrictedInput restrictedInput) {
         valuesToRestrict = Arrays.asList(restrictedInput.valuesToRestrict());
@@ -50,9 +53,9 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
         }
 
         if (exactMatch) {
-            return valuesToRestrict.stream().noneMatch(field::equals);
+            return valuesToRestrict.stream().filter(Objects::nonNull).noneMatch(field::equals);
         } else {
-            return valuesToRestrict.stream().noneMatch(field::contains);
+            return valuesToRestrict.stream().filter(Objects::nonNull).noneMatch(field::contains);
         }
     }
 
@@ -67,7 +70,7 @@ public class RestrictedInputValidator implements ConstraintValidator<RestrictedI
             return true;
         }
 
-        return regexToMatch.stream().allMatch(field::matches);
+        return regexToMatch.stream().filter(Objects::nonNull).allMatch(field::matches);
     }
 
 }
