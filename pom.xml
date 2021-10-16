@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pmanaktala</groupId>
     <artifactId>restricted-input</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>restricted-input</name>
     <packaging>jar</packaging>
     <description>A custom annotation based package that is used to allow only restricted inputs. The main reason for
@@ -62,7 +62,7 @@
         <url>https://github.com/pmanaktala/restirced-input</url>
         <connection>scm:git:https://github.com/pmanaktala/restirced-input.git</connection>
         <developerConnection>scm:git:https://github.com/pmanaktala/restirced-input.git</developerConnection>
-      <tag>restricted-input-1.0.0-FINAL</tag>
+      <tag>restricted-input-1.0.0</tag>
   </scm>
     <build>
 
