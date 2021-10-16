@@ -60,8 +60,8 @@
 
     <scm>
         <url>https://github.com/pmanaktala/restirced-input</url>
-        <connection>scm:git:https://github.com/pmanaktala/restirced-input.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/pmanaktala/restirced-input.git</developerConnection>
+        <connection>scm:git:git@github.com:pmanaktala/restirced-input.git</connection>
+        <developerConnection>scm:git:git@github.com:pmanaktala/restirced-input.git</developerConnection>
       <tag>restricted-input-1.0.0</tag>
   </scm>
     <build>
