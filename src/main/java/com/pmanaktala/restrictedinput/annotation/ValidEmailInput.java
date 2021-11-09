@@ -9,22 +9,8 @@ import java.lang.annotation.*;
 
 /**
  * <p>
- * Checks if the Input contains only Unicode letters or digits. <br>
- * Uses StringUtils from apache for comparison.
- * </p>
- *
- * <p>{@code null} will return {@code false}.
- * An empty CharSequence (length()=0) will return {@code false}.</p>
- *
- * <pre>
- * StringUtils.isAlphanumeric(null)   = false
- * StringUtils.isAlphanumeric("")     = false
- * StringUtils.isAlphanumeric("  ")   = false
- * StringUtils.isAlphanumeric("abc")  = true
- * StringUtils.isAlphanumeric("ab c") = false
- * StringUtils.isAlphanumeric("ab2c") = true
- * StringUtils.isAlphanumeric("ab-c") = false
- * </pre>
+ * Checks if the Input contains valid email or not <br>
+ * Uses apache commons for validation
  **/
 @Documented
 @Constraint(validatedBy = ValidEmailValidator.class)
