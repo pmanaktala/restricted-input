@@ -6,8 +6,7 @@
     <version>1.0.1-SNAPSHOT</version>
     <name>restricted-input</name>
     <packaging>jar</packaging>
-    <description>A custom annotation based package that is used to allow only restricted inputs. The main reason for
-        this is to not allow certain keywords or phrases inputs
+    <description>A helper dependency that has various constraint annotations for restricted inputs.
     </description>
     <url>https://github.com/pmanaktala/restirced-input/</url>
 

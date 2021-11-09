@@ -15,7 +15,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import static org.mockito.Mockito.when;
 
-class RestrictedInputApplicationTests {
+class RestrictedInputTests {
 
     RestrictedInputValidator validator = new RestrictedInputValidator();
 
