@@ -1,12 +1,16 @@
-# restirced-input
-A custom annotation based spring boot starter that helps restricting the input of a field in input.
+<h1 align="center">Welcome to restirced-input 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="http://www.apache.org/licenses/" target="_blank">
+    <img alt="License: Apache License 2.0" src="https://img.shields.io/badge/License-Apache License 2.0-yellow.svg" />
+  </a>
+</p>
 
-The maven dependency is used for restricting the user input. 
+> A helper dependency that has various constraint annotations for restricted inputs.
 
+## Adding Maven Dependency
 
-Dependency Information
-
-```
+```xml
         <dependency>
             <groupId>com.pmanaktala</groupId>
             <artifactId>restricted-input</artifactId>
@@ -14,60 +18,62 @@ Dependency Information
         </dependency>
 ```
 
-The annotation works as follows : 
+##Current Features
 
-```
+### 1. Restricted Input
+```java
+import com.pmanaktala.restrictedinput.annotation.RestrictedInput;
+
+class DTO {
     @RestrictedInput(valuesToRestrict = {"abc"}, regexToMatch = {"^[a-zA-Z]*$"}, exactMatchValues = true)
     private String name;
+}
 ```
 
-Description : 
+#### Description :
 
-valuesToRestrict 
-Contains a list of values that are not allowed
+Checks if the input satisfies the given conditions.
+* All the conditions specified should match.
+* If the value is null, the validation will pass.
+* By default, `valuesToRestrict` field and `regexToMatch` field is empty. i.e. Validation will always pass
 
-regexToMatch 
-Contains a list of regular expression that should match. 
-Note : All the regex should match else the validation should fail.
+#### Parameters : 
 
-exactMatchValues
-If the values in parameter 1, should exactly match or not.
+Field | Mandatory | Description | Default Value | Comments
+--- | --- | --- | --- | ---
+valuesToRestrict | No | Contains a list of values that are not allowed | No value | NA
+regexToMatch | No | Contains a list of regular expression that should match. | No value | Note : All the regex should match else the validation should fail.
+exactMatchValues | No |  If the values in parameter 1, should exactly match or not. | false | NA
 
-Sample UseCase 
+<hr>
 
-**Use Case 1**
+### 2. AlphaNumeric Input
+```java
+import com.pmanaktala.restrictedinput.annotation.AlphaNumericInput;
 
+class DTO {
+    @AlphaNumericInput
+    private String otherDetails;
+}
 ```
-    @RestrictedInput(valuesToRestrict = {"abc"}, exactMatchValues = true)
-    private String name;
-```
+#### Description :
+Checks if the input is a valid alphanumeric input of not.
 
-Validation will pass on inputs.
+* If the value is null, the validation will fail.
 
-1. xyz
-2. xyzabc
-3. ABC(since input validation is case sensitive)
-4. abcx
+## Author
 
-Validation will fail on
+👤 **Parth Manaktala**
 
-1. abc
+* Website: https://pmanaktala.com
+* Github: [@pmanaktala](https://github.com/pmanaktala)
 
-**Use Case 2**
+## Show your support
 
-```
-    @RestrictedInput(valuesToRestrict = {"abc"}, exactMatchValues = false)
-    private String name;
-```
+Give a ⭐️ if this project helped you!
 
-Validation will pass on inputs.
+## 📝 License
+This project is [Apache License 2.0](http://www.apache.org/licenses/) licensed.
 
-1. xyz
-2. ABC(since input validation is case sensitive)
-3. xabyc
-
-Validation will fail on
-
-1. abc
-2. xyzabc
-3. abcx
+***
+_This README was generated with the help of  [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
