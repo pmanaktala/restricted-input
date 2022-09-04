@@ -1,12 +1,13 @@
 package com.pmanaktala.restrictedinput.validator;
 
 import com.pmanaktala.restrictedinput.annotation.AlphaNumericInput;
+import com.pmanaktala.restrictedinput.annotation.ValidEmailInput;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class ValidEmailValidator implements ConstraintValidator<AlphaNumericInput, String> {
+public class ValidEmailValidator implements ConstraintValidator<ValidEmailInput, String> {
     /**
      * Initializes the validator in preparation for
      * {@link #isValid(String, ConstraintValidatorContext)} calls.
@@ -21,7 +22,7 @@ public class ValidEmailValidator implements ConstraintValidator<AlphaNumericInpu
      * @param constraintAnnotation annotation instance for a given constraint declaration
      */
     @Override
-    public void initialize(AlphaNumericInput constraintAnnotation) {
+    public void initialize(ValidEmailInput constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 

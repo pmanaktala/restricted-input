@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pmanaktala</groupId>
     <artifactId>restricted-input</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <name>restricted-input</name>
     <packaging>jar</packaging>
     <description>A helper dependency that has various constraint annotations for restricted inputs.
@@ -66,8 +66,8 @@
         <url>https://github.com/pmanaktala/restirced-input</url>
         <connection>scm:git:https://github.com/pmanaktala/restirced-input.git</connection>
         <developerConnection>scm:git:https://github.com/pmanaktala/restirced-input.git</developerConnection>
-      <tag>restricted-input-1.0.0</tag>
-  </scm>
+        <tag>restricted-input-1.0.0</tag>
+    </scm>
     <build>
 
         <plugins>

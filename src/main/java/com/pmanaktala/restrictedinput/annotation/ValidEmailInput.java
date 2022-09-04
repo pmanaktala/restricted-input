@@ -18,7 +18,7 @@ import java.lang.annotation.*;
         ElementType.LOCAL_VARIABLE, ElementType.TYPE_PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidEmailInput {
-    String message() default "Input is not alphameric";
+    String message() default "Input is not a valid email";
 
     Class<?>[] groups() default {};
 
