@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to restriced-input 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-2.1.1-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-3.0.0git-blue.svg?cacheSeconds=2592000" />
   <a href="http://www.apache.org/licenses/" target="_blank">
     <img alt="License: Apache License 2.0" src="https://img.shields.io/badge/License-Apache License 2.0-yellow.svg" />
   </a>
