@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to restirced-input 👋</h1>
+<h1 align="center">Welcome to restriced-input 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="http://www.apache.org/licenses/" target="_blank">
@@ -39,11 +39,11 @@ Checks if the input satisfies the given conditions.
 
 #### Parameters : 
 
-Field | Mandatory | Description | Default Value | Comments
---- | --- | --- | --- | ---
-valuesToRestrict | No | Contains a list of values that are not allowed | No value | NA
-regexToMatch | No | Contains a list of regular expression that should match. | No value | Note : All the regex should match else the validation should fail.
-exactMatchValues | No |  If the values in parameter 1, should exactly match or not. | false | NA
+| Field            | Mandatory | Description                                                | Default Value | Comments                                                           |
+|------------------|-----------|------------------------------------------------------------|---------------|--------------------------------------------------------------------|
+| valuesToRestrict | No        | Contains a list of values that are not allowed             | No value      | NA                                                                 |
+| regexToMatch     | No        | Contains a list of regular expression that should match.   | No value      | Note : All the regex should match else the validation should fail. |
+| exactMatchValues | No        | If the values in parameter 1, should exactly match or not. | false         | NA                                                                 |
 
 <hr>
 
@@ -60,6 +60,20 @@ class DTO {
 Checks if the input is a valid alphanumeric input of not.
 
 * If the value is null, the validation will fail.
+
+### 3. ValidPhone Input
+```java
+import com.pmanaktala.restrictedinput.annotation.ValidPhone;
+
+class DTO {
+    @ValidPhone(region = "IN")
+    private String otherDetails;
+}
+```
+#### Description :
+Checks if the input is a valid phone number input of not.
+
+* The datatype of the input is set to be string, as it can contain symbols such as '+' and '()'
 
 ## Author
 

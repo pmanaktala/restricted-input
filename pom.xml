@@ -3,14 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pmanaktala</groupId>
     <artifactId>restricted-input</artifactId>
-    <version>2.1.1</version>
+    <version>3.0.0</version>
     <name>restricted-input</name>
     <packaging>jar</packaging>
     <description>A helper dependency that has various constraint annotations for restricted inputs.
     </description>
     <url>https://github.com/pmanaktala/restirced-input/</url>
-
-
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -36,6 +34,13 @@
             <version>7.0.5.Final</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
@@ -47,6 +52,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.googlecode.libphonenumber/libphonenumber -->
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>8.12.56</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.apache.commons</groupId>
